@@ -4,6 +4,7 @@ using System.IO;
 using log4net.Config;
 
 using Photon.SocketServer;
+using GamePhotonServer.Manager;
 
 namespace GamePhotonServer
 {
@@ -32,6 +33,10 @@ namespace GamePhotonServer
             }
 
             log.Info("Setup Completed！");
+
+            //IUserManager userManager = new UserManager();
+            //log.Info(userManager.VerifyUser("wer", "wer"));
+            //log.Info(userManager.VerifyUser("wer2", "wer"));
         }
 
         //server端关闭的时候
