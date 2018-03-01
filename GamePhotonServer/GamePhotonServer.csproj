@@ -87,6 +87,9 @@
   <ItemGroup>
     <Compile Include="ClientPeer.cs" />
     <Compile Include="GameServer.cs" />
+    <Compile Include="Handler\BaseHandler.cs" />
+    <Compile Include="Handler\DefaultHandler.cs" />
+    <Compile Include="Handler\LoginHandler.cs" />
     <Compile Include="Manager\IUserManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Model\User.cs" />
@@ -110,6 +113,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{ce6e69b1-0425-47bd-8038-cf7f9cd00e02}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

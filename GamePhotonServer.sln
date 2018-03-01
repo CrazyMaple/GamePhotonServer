@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamePhotonServer", "GamePhotonServer\GamePhotonServer.csproj", "{2CA78A0D-758A-4F32-833D-5EFC08DBF67E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{CE6E69B1-0425-47BD-8038-CF7F9CD00E02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2CA78A0D-758A-4F32-833D-5EFC08DBF67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CA78A0D-758A-4F32-833D-5EFC08DBF67E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CA78A0D-758A-4F32-833D-5EFC08DBF67E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE6E69B1-0425-47BD-8038-CF7F9CD00E02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE6E69B1-0425-47BD-8038-CF7F9CD00E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE6E69B1-0425-47BD-8038-CF7F9CD00E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE6E69B1-0425-47BD-8038-CF7F9CD00E02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
