@@ -1,32 +1,25 @@
-﻿using Common;
-using Photon.SocketServer;
-using GamePhotonServer;
-
+﻿using Photon.SocketServer;
+using Common;
 using Common.Tools;
 using GamePhotonServer.Manager;
-using System.Collections.Generic;
+using GamePhotonServer.Model;
 
 namespace GamePhotonServer.Handler
 {
-    public class LoginHandler : BaseHandler
+    public class RegisterHandler : BaseHandler
     {
-        public LoginHandler()
+        public RegisterHandler()
         {
-            OpCode = OperationCode.Login;
+            OpCode = OperationCode.Register;
         }
 
         public override void OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters, ClientPeer peer)
         {
-            
             string strUserName = DictTool.GetValue<byte, object>(operationRequest.Parameters, (byte)ParameterCode.UserName).ToString();
             string strPassWord = DictTool.GetValue<byte, object>(operationRequest.Parameters, (byte)ParameterCode.PassWord).ToString();
 
             IUserManager userManager = new UserManager();
-            ReturnCode returnCode = userManager.VerifyUser(strUserName, strPassWord) ? ReturnCode.Success : ReturnCode.Failed;
-
-            //Dictionary<byte, object> data = new Dictionary<byte, object>();
-            //data.Add((byte)returnCode, returnCode);
-            //OperationResponse opResponse = new OperationResponse((byte)OperationCode.Login, data);
+            ReturnCode returnCode = userManager.Add(new User(strUserName, strPassWord)) ? ReturnCode.Success : ReturnCode.Failed;
 
             OperationResponse opResponse = new OperationResponse(operationRequest.OperationCode);
             opResponse.ReturnCode = (short)returnCode;

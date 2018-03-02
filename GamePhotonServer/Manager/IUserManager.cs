@@ -5,7 +5,7 @@ namespace GamePhotonServer.Manager
 {
     interface IUserManager
     {
-        void Add(User user);
+        bool Add(User user);
         void Update(User user);
         void Remove(User user);
         User GetById(int id);

@@ -5,13 +5,14 @@ using NHibernate.Criterion;
 
 namespace GamePhotonServer.Manager
 {
-    class UserManager:IUserManager
+    class UserManager : IUserManager
     {
-        public void Add(Model.User user)
+        public bool Add(Model.User user)
         {
-            //ISession session = NHibernateHelper.OpenSession();
-            //session.Save(user);
-            //session.Close();
+            if (CheckUserExist(user.Username))
+            {
+                return false;
+            }
             using (ISession session = NHibernateHelper.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
@@ -20,7 +21,7 @@ namespace GamePhotonServer.Manager
                     transaction.Commit();
                 }
             }
-
+            return true;
         }
 
         public void Update(Model.User user)
@@ -72,7 +73,7 @@ namespace GamePhotonServer.Manager
             }
         }
 
-        
+
 
         public ICollection<Model.User> GetAllUsers()
         {
@@ -88,6 +89,27 @@ namespace GamePhotonServer.Manager
 
 
         public bool VerifyUser(string username, string password)
+        {
+            return CheckUserExist(username, password);
+        }
+
+        private bool CheckUserExist(string username)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                //ICriteria criteria = session.CreateCriteria(typeof(User));
+                //criteria.Add(Restrictions.Eq("Username", username));
+                //User user = criteria.UniqueResult<User>();
+                User user = session
+                    .CreateCriteria(typeof(User))
+                    .Add(Restrictions.Eq("Username", username))
+                    .UniqueResult<User>();
+                if (user == null) return false;
+                return true;
+            }
+        }
+
+        private bool CheckUserExist(string username, string password)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {

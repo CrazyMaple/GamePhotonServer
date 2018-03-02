@@ -4,6 +4,7 @@
     {
         UserName,
         PassWord,
-        LoginState
+        LoginState,
+        RegisterState
     }
 }

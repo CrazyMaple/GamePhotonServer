@@ -7,6 +7,7 @@ using Common;
 using Photon.SocketServer;
 using GamePhotonServer.Handler;
 using GamePhotonServer.Manager;
+using GamePhotonServer.Model;
 using System.Collections.Generic;
 
 namespace GamePhotonServer
@@ -50,6 +51,10 @@ namespace GamePhotonServer
             //IUserManager userManager = new UserManager();
             //log.Info(userManager.VerifyUser("wer", "wer"));
             //log.Info(userManager.VerifyUser("wer2", "wer"));
+            //IUserManager userManager = new UserManager();
+
+            //log.Error("1HeiHei:" + userManager.Add(new User("maple1", "123")));
+            //log.Error("2HeiHei:" + userManager.Add(new User("maple1", "123")));
 
             InitHandlers();
         }
@@ -58,6 +63,8 @@ namespace GamePhotonServer
         {
             LoginHandler loginHandler = new LoginHandler();
             HandlerDict.Add(loginHandler.OpCode, loginHandler);
+            RegisterHandler registerhandler = new RegisterHandler();
+            HandlerDict.Add(registerhandler.OpCode, registerhandler);
             DefaultHandler defaultHandler = new DefaultHandler();
             HandlerDict.Add(defaultHandler.OpCode, defaultHandler);
         }
