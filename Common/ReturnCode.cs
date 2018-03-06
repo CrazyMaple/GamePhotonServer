@@ -1,6 +1,6 @@
 ﻿namespace Common
 {
-    public enum ReturnCode:byte
+    public enum ReturnCode:ushort
     {
         Success,
         Failed

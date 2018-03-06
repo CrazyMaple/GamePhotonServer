@@ -61,7 +61,7 @@ namespace GamePhotonServer.Manager
             }
         }
 
-        public Model.User GetByUsername(string username)
+        public User GetByUsername(string username)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -75,7 +75,7 @@ namespace GamePhotonServer.Manager
 
 
 
-        public ICollection<Model.User> GetAllUsers()
+        public ICollection<User> GetAllUsers()
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -95,18 +95,9 @@ namespace GamePhotonServer.Manager
 
         private bool CheckUserExist(string username)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
-            {
-                //ICriteria criteria = session.CreateCriteria(typeof(User));
-                //criteria.Add(Restrictions.Eq("Username", username));
-                //User user = criteria.UniqueResult<User>();
-                User user = session
-                    .CreateCriteria(typeof(User))
-                    .Add(Restrictions.Eq("Username", username))
-                    .UniqueResult<User>();
-                if (user == null) return false;
-                return true;
-            }
+            User user = GetByUsername(username);
+            if (user == null) return false;
+            return true;
         }
 
         private bool CheckUserExist(string username, string password)
