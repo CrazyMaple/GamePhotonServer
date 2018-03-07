@@ -67,6 +67,8 @@ namespace GamePhotonServer
             HandlerDict.Add(registerhandler.OpCode, registerhandler);
             DefaultHandler defaultHandler = new DefaultHandler();
             HandlerDict.Add(defaultHandler.OpCode, defaultHandler);
+            SyncPositionHandler syncPositionHandler = new SyncPositionHandler();
+            HandlerDict.Add(syncPositionHandler.OpCode, syncPositionHandler);
         }
 
         //server端关闭的时候

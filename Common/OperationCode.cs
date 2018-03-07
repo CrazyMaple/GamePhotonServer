@@ -4,6 +4,7 @@
     {
         Login,
         Register,
-        Default
+        Default,
+        SyncPosition
     }
 }
