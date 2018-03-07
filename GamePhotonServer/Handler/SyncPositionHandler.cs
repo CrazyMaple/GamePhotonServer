@@ -13,9 +13,14 @@ namespace GamePhotonServer.Handler
 
         public override void OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters, ClientPeer peer)
         {
-            string strX = DictTool.GetValue<byte, object>(operationRequest.Parameters, (byte)ParameterCode.X).ToString();
-            string strY = DictTool.GetValue<byte, object>(operationRequest.Parameters, (byte)ParameterCode.Y).ToString();
-            string strZ = DictTool.GetValue<byte, object>(operationRequest.Parameters, (byte)ParameterCode.Z).ToString();
+            float fX = (float)DictTool.GetValue<byte, object>(operationRequest.Parameters, (byte)ParameterCode.X);
+            float fY = (float)DictTool.GetValue<byte, object>(operationRequest.Parameters, (byte)ParameterCode.X);
+            float fZ = (float)DictTool.GetValue<byte, object>(operationRequest.Parameters, (byte)ParameterCode.X);
+            peer.Position = new Vector3Data(fX, fY, fZ);
+
+            string strX = fX.ToString();
+            string strY = fY.ToString();
+            string strZ = fZ.ToString();
 
             GameServer.log.Info("Coordinate:(" + strX + "," + strY + "," + strZ + ")");
         }

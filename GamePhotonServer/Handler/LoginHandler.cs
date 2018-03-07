@@ -23,6 +23,10 @@ namespace GamePhotonServer.Handler
 
             IUserManager userManager = new UserManager();
             ReturnCode returnCode = userManager.VerifyUser(strUserName, strPassWord) ? ReturnCode.Success : ReturnCode.Failed;
+            if (returnCode == ReturnCode.Success)//储存用户名
+            {
+                peer.UserName = strUserName;
+            }
 
             //Dictionary<byte, object> data = new Dictionary<byte, object>();
             //data.Add((byte)returnCode, returnCode);

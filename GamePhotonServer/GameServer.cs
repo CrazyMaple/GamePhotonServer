@@ -21,6 +21,7 @@ namespace GamePhotonServer
         }
 
         public Dictionary<OperationCode, BaseHandler> HandlerDict = new Dictionary<OperationCode, BaseHandler>();
+        public List<ClientPeer> peerList = new List<ClientPeer>();
 
         public static readonly ILogger log = LogManager.GetCurrentClassLogger();
 
@@ -28,7 +29,9 @@ namespace GamePhotonServer
         protected override PeerBase CreatePeer(InitRequest initRequest)
         {
             log.Info("一个客户端连接进来了");
-            return new ClientPeer(initRequest);
+            ClientPeer peer = new ClientPeer(initRequest);
+            peerList.Add(peer);
+            return peer;
         }
 
         //初始化

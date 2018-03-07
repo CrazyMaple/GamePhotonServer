@@ -7,13 +7,10 @@ using GamePhotonServer.Handler;
 
 namespace GamePhotonServer
 {
-    enum RequestCode
-    {
-        Test = 0
-    };
-
     public class ClientPeer : Photon.SocketServer.ClientPeer
     {
+        public string UserName = "";
+        public Vector3Data Position = new Vector3Data();
         public ClientPeer(InitRequest initRequest)
             : base(initRequest)
         {
@@ -22,6 +19,7 @@ namespace GamePhotonServer
         //处理客户端断开链接的后续工作
         protected override void OnDisconnect(DisconnectReason disconnectCode, string reasonDetail)
         {
+            GameServer.Instance.peerList.Remove(this);
         }
 
         //处理客户端的请求
